@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guest Tours | D & D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Firebase -->
+  <script type="module" src="./public/js/guest-tours.js"></script>
+</head>
+
+<body class="bg-zinc-50 min-h-screen flex flex-col">
+
+<!-- NAVBAR -->
+<nav class="bg-white border-b border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img src="/public/public/assets/final logo.png"
+           class="h-10 w-10 rounded-xl shadow"
+           alt="D & D Tours">
+      <div>
+        <p class="font-semibold text-zinc-900 text-sm">D & D Tours</p>
+        <p class="text-[10px] text-zinc-500">Guest browsing</p>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex gap-3">
+      <a href="index.html"
+         class="px-3 py-2 rounded-lg text-sm border border-zinc-200 hover:bg-zinc-100">
+        ← Back Home
+      </a>
+
+      <a href="login.html"
+         class="px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm hover:bg-emerald-700">
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-10 space-y-8">
+
+  <!-- HEADER -->
+  <div class="space-y-2">
+    <h1 class="text-2xl md:text-3xl font-bold text-zinc-900">
+      Available Tours
+    </h1>
+    <p class="text-sm text-zinc-600 max-w-md">
+      You are browsing as a guest. Select a tour to continue booking.
+    </p>
+  </div>
+
+  <!-- BACK BUTTON (only shown when single tour) -->
+  <button
+    id="back-to-all"
+    class="hidden text-sm text-emerald-700 hover:underline">
+    ← Back to all tours
+  </button>
+
+  <!-- TOURS GRID -->
+  <div
+    id="guest-tours-list"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t bg-white">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 py-4 text-[11px] text-zinc-400">
+    © 2025 D & D Tours · Guest mode
+  </div>
+</footer>
+
+</body>
+</html>

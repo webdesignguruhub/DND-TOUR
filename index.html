@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D & D Tours — Book Private Tours in Sri Lanka</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Softer float animation for hero image card */
+    @keyframes float {
+      0%   { transform: translateY(0px); }
+      50%  { transform: translateY(-4px); }
+      100% { transform: translateY(0px); }
+    }
+    .float-card {
+      animation: float 8s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    /* Fade-in-up for sections */
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(18px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.7s ease-out both;
+    }
+    .fade-in-up-delay-1 { animation-delay: 0.12s; }
+    .fade-in-up-delay-2 { animation-delay: 0.22s; }
+    .fade-in-up-delay-3 { animation-delay: 0.32s; }
+  </style>
+</head>
+<body class="bg-zinc-50 min-h-screen flex flex-col">
+<!-- NAVBAR -->
+<!-- NAVBAR -->
+<nav id="navbar" class="absolute top-0 left-0 w-full z-30 transition-all duration-300">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+    <!-- LOGO -->
+    <div class="flex items-center gap-3">
+      <img src="/public/public/assets/final logo.png"
+           alt="D & D Tours"
+           class="h-12 w-12 object-contain rounded-xl shadow-lg transition-transform duration-300 hover:scale-110 hover:shadow-2xl">
+
+      <div class="leading-tight">
+        <p class="font-semibold text-white text-sm md:text-base tracking-tight logo-text">D &amp; D Tours</p>
+        <p class="text-[10px] text-white/70 logo-subtext">Private Tours · Sri Lanka</p>
+      </div>
+    </div>
+
+    <!-- DESKTOP MENU -->
+    <div class="hidden md:flex items-center gap-7 text-sm font-medium menu-links">
+      <a href="#tours-section" class="hover:text-emerald-300">Tours</a>
+      <a href="gallery.html" class="hover:text-emerald-300">Gallery</a>
+      <a href="contact.html" class="hover:text-emerald-300">Contact</a>
+      <a href="login.html">
+        <button class="px-4 py-2 rounded-xl bg-emerald-500 text-white text-sm hover:bg-emerald-600">
+          Login / Signup
+        </button>
+      </a>
+    </div>
+
+    <!-- HAMBURGER -->
+    <button id="mobile-menu-btn"
+      class="md:hidden h-10 w-10 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center text-white text-xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE MENU (THIS WAS MISSING — THIS FIXES YOUR ERROR) -->
+  <div id="mobile-menu"
+       class="hidden md:hidden absolute top-16 left-0 w-full bg-white shadow-lg border-t border-zinc-200 z-50">
+
+    <a href="#tours-section" class="block px-6 py-3 text-zinc-800 border-b">Tours</a>
+    <a href="gallery.html" class="block px-6 py-3 text-zinc-800 border-b">Gallery</a>
+    <a href="contact.html" class="block px-6 py-3 text-zinc-800 border-b">Contact</a>
+    <a href="login.html" class="block px-6 py-3 text-zinc-800">Login / Signup</a>
+
+  </div>
+</nav>
+
+<!-- SAFE JS (NO CRASH GUARANTEE) -->
+<script>
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  }
+</script>
+
+<style>
+  /* Initial transparent over hero */
+  #navbar {
+    background-color: transparent;
+  }
+
+  /* Scroll effect */
+  #navbar.scrolled {
+    position: fixed;
+    top: 0;
+    backdrop-blur: 8px;
+    background-color: rgba(255,255,255,0.95);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  /* All navbar text & buttons color change on scroll */
+  #navbar .logo-text,
+  #navbar .logo-subtext,
+  #navbar .menu-links a,
+  #navbar .menu-links button,
+  #navbar #mobile-menu-btn,
+  #navbar .menu-button {
+    color: white;
+    transition: color 0.3s;
+  }
+
+  #navbar.scrolled .logo-text,
+  #navbar.scrolled .logo-subtext,
+  #navbar.scrolled .menu-links a,
+  #navbar.scrolled .menu-links button,
+  #navbar.scrolled #mobile-menu-btn,
+  #navbar.scrolled .menu-button {
+    color: #111827 !important; /* black text */
+  }
+</style>
+
+
+
+
+
+  <main class="flex-1">
+  <!-- HERO SECTION -->
+<section class="relative bg-gradient-to-b from-emerald-900 via-emerald-800 to-zinc-900 border-b border-emerald-900 overflow-hidden text-white">
+
+  <!-- Background accents -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] bg-emerald-500/20 rounded-full blur-[140px]"></div>
+    <div class="absolute top-32 -right-32 w-[30rem] h-[30rem] bg-teal-400/20 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-32 bg-gradient-to-r from-transparent via-amber-400/20 to-transparent blur-3xl"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-4 md:px-8 pt-24 pb-28 grid lg:grid-cols-2 gap-x-16 gap-y-20 items-center">
+
+    <!-- LEFT SIDE -->
+    <div class="space-y-6 fade-in-up">
+
+      <!-- Badge -->
+      <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-[11px] font-semibold text-emerald-200">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+        Trusted Local Guides · Sri Lanka
+      </span>
+
+      <!-- Headline -->
+      <h1 class="text-[2.6rem] md:text-4xl lg:text-[3.3rem] font-extrabold leading-[1.15] tracking-tight max-w-xl">
+        Discover Sri Lanka with
+        <span class="block text-emerald-300">private tours crafted around you.</span>
+      </h1>
+
+      <!-- Description -->
+      <p class="text-sm md:text-base text-emerald-100/90 leading-relaxed max-w-xl">
+        D &amp; D Tours offers authentic, privately guided experiences across Sri Lanka.
+        Choose your journey, request your dates, and confirm your booking with flexible
+        payment options — guided personally by a local host.
+      </p>
+
+      <!-- CTA -->
+      <div class="flex flex-wrap gap-3 pt-3">
+        <button onclick="window.location.href='login.html'" class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-900 text-sm md:text-base font-semibold shadow-lg shadow-emerald-500/30 transition hover:-translate-y-0.5">
+          Plan your journey
+        </button>
+
+        <a href="#tours-section" class="px-6 py-3 rounded-xl border border-white/30 bg-white/10 backdrop-blur text-sm md:text-base hover:bg-white/20 transition">
+          View tours
+        </a>
+      </div>
+
+      <!-- Feature bullets -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-2 pt-4 text-[11px] text-emerald-100/80 max-w-xl">
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+          Private &amp; customizable itineraries
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-teal-400"></span>
+          Local drivers &amp; expert guides
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+          Flexible booking &amp; payments
+        </div>
+      </div>
+    </div>
+
+   
+
+  </div>
+
+  <!-- TRUST STRIP -->
+  <div class="relative max-w-6xl mx-auto px-4 md:px-8 pb-16 fade-in-up fade-in-up-delay-2">
+    <div class="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 px-6 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 text-[11px] md:text-xs text-emerald-100/90">
+
+      <div class="flex items-center gap-3 flex-1 min-w-[35%]">
+        <span class="h-6 w-6 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs font-bold">✓</span>
+        <p>
+          Trusted local operator offering private tours across Sri Lanka with flexible booking options.
+        </p>
+      </div>
+
+      <div class="flex gap-12 flex-1 min-w-[60%]">
+        <div class="space-y-1">
+          <p class="font-semibold text-emerald-50 text-sm">Live bookings</p>
+          <p class="text-emerald-100/80 text-[12px] md:text-sm">Secure &amp; real-time confirmations</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-semibold text-emerald-50 text-sm">Photo galleries</p>
+          <p class="text-emerald-100/80 text-[12px] md:text-sm">High-quality tour imagery</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+   <!-- FEATURES SECTION -->
+<section class="py-16 md:py-20 bg-gradient-to-b from-zinc-50 to-white border-b border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 space-y-10 fade-in-up">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+      <div class="space-y-2 max-w-md">
+        <h2 class="text-xl md:text-2xl font-bold text-zinc-900">
+          Designed for a personal host, trusted by every traveller.
+        </h2>
+        <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+          D &amp; D Tours operates as a private, owner-led service. Travellers enjoy a smooth, modern booking
+          experience while you manage tours, guests, and payments from one clear dashboard.
+        </p>
+      </div>
+      <p class="text-[11px] text-zinc-400 max-w-xs">
+        Built to grow — your tours can later be linked with platforms like TripAdvisor or Google Travel.
+      </p>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="grid sm:grid-cols-3 gap-6 md:gap-8 text-sm">
+
+      <!-- Guests -->
+      <div
+        class="bg-white/90 backdrop-blur rounded-2xl
+               shadow-sm p-6 space-y-3
+               border border-zinc-100
+               hover:shadow-lg hover:-translate-y-1 transition">
+
+        <div class="flex items-center gap-3">
+          <span
+            class="h-8 w-8 rounded-xl
+                   bg-emerald-100 text-emerald-700
+                   flex items-center justify-center text-sm">
+            🧳
+          </span>
+          <p class="font-semibold text-zinc-900">For travellers</p>
+        </div>
+
+        <p class="text-xs text-zinc-600 leading-relaxed">
+          Discover curated Sri Lankan tours, choose preferred dates, add hotel pickup details,
+          and send a booking request — simple, familiar, and stress-free.
+        </p>
+      </div>
+
+      <!-- Host -->
+      <div
+        class="bg-white/90 backdrop-blur rounded-2xl
+               shadow-sm p-6 space-y-3
+               border border-zinc-100
+               hover:shadow-lg hover:-translate-y-1 transition">
+
+        <div class="flex items-center gap-3">
+          <span
+            class="h-8 w-8 rounded-xl
+                   bg-teal-100 text-teal-700
+                   flex items-center justify-center text-sm">
+            📋
+          </span>
+          <p class="font-semibold text-zinc-900">For the host</p>
+        </div>
+
+        <p class="text-xs text-zinc-600 leading-relaxed">
+          A private admin area lets you view upcoming tours, guest information,
+          payment status, and special requests — all in one place, only accessible to you.
+        </p>
+      </div>
+
+      <!-- Payments -->
+      <div
+        class="bg-white/90 backdrop-blur rounded-2xl
+               shadow-sm p-6 space-y-3
+               border border-zinc-100
+               hover:shadow-lg hover:-translate-y-1 transition">
+
+        <div class="flex items-center gap-3">
+          <span
+            class="h-8 w-8 rounded-xl
+                   bg-amber-100 text-amber-700
+                   flex items-center justify-center text-sm">
+            💳
+          </span>
+          <p class="font-semibold text-zinc-900">Flexible payments</p>
+        </div>
+
+        <p class="text-xs text-zinc-600 leading-relaxed">
+          Guests can reserve first and pay later using PayHere, bank transfer,
+          or direct coordination — clearly explained during the booking process.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRIPADVISOR AWARD SECTION (aligned with Features typography) -->
+<section class="py-16 md:py-20 bg-white border-y border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 fade-in-up">
+
+    <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+
+      <!-- LEFT: IMAGE -->
+      <div class="relative">
+        <div class="absolute -inset-3 bg-emerald-100 rounded-3xl blur-2xl opacity-60"></div>
+        <img
+          src="/public/public/assets/award tripavisor.jpeg"
+          alt="TripAdvisor Travellers' Choice Award 2025"
+          class="relative rounded-3xl shadow-xl border border-zinc-200 w-full max-w-md mx-auto"
+        />
+      </div>
+
+      <!-- RIGHT: CONTENT -->
+      <div class="space-y-4 max-w-xl">
+
+        <span
+          class="inline-flex items-center gap-2 px-3 py-1 rounded-full
+                 bg-emerald-50 text-emerald-700 text-[11px] font-semibold
+                 border border-emerald-100">
+          🏆 TripAdvisor Recognition
+        </span>
+
+        <!-- SAME HEADING STYLE AS FEATURES -->
+        <h2 class="text-xl md:text-2xl font-bold text-zinc-900 leading-tight">
+          Travellers’ Choice Award 2025
+        </h2>
+
+        <!-- SAME BODY TEXT SCALE -->
+        <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+          D &amp; D Tours has been recognised with the
+          <strong>TripAdvisor Travellers’ Choice Award 2025</strong>,
+          placing us among the <strong>top 10% of tour experiences worldwide</strong>.
+          This distinction is earned through consistently high guest ratings,
+          authentic reviews, and reliable service quality throughout the year.
+        </p>
+
+        <!-- SAME BULLET STYLE AS FEATURES -->
+        <div class="space-y-2 pt-2 text-[11px] text-zinc-500">
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            Based entirely on verified guest reviews
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            Recognised among the top 10% worldwide
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+            Consistent quality, service, and hosting
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- HOW IT WORKS -->
+    <section id="how-it-works" class="bg-zinc-50">
+      <div class="max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-20 space-y-9 fade-in-up">
+        <div class="space-y-2">
+          <h2 class="text-xl md:text-2xl font-bold text-zinc-900">How booking works (TripAdvisor-style)</h2>
+          <p class="text-xs md:text-sm text-zinc-600 max-w-md leading-relaxed">
+            Guests go through a familiar booking journey: choose date, group size, contact details and preferred payment
+            method — and you get all info in one place.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7 md:gap-9 text-sm">
+          <div class="flex gap-3">
+            <div
+              class="h-8 w-8 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold shadow-sm">
+              1
+            </div>
+            <div class="space-y-1">
+              <p class="font-semibold text-zinc-900">Create a guest account</p>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Simple email-based signup. Guests can log in again later and see active and past tours.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div
+              class="h-8 w-8 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold shadow-sm">
+              2
+            </div>
+            <div class="space-y-1">
+              <p class="font-semibold text-zinc-900">Choose tour, date &amp; payment option</p>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                Guests pick an experience, add date, pickup location and choose to pay via PayHere, bank transfer or on-arrival.
+              </p>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <div
+              class="h-8 w-8 rounded-full bg-emerald-600 text-white text-xs flex items-center justify-center font-bold shadow-sm">
+              3
+            </div>
+            <div class="space-y-1">
+              <p class="font-semibold text-zinc-900">You confirm &amp; host the tour</p>
+              <p class="text-xs text-zinc-600 leading-relaxed">
+                D &amp; D Tours sees the request on the private admin page, confirms with the guest, and the tour appears as “active”.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+
+ <!-- GALLERY PREVIEW SECTION -->
+<section class="py-20 bg-gradient-to-b from-white to-zinc-50 border-y border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 space-y-10 fade-in-up">
+
+    <!-- Header -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <div class="space-y-2 max-w-lg">
+        <h2 class="text-xl md:text-2xl font-bold text-zinc-900">
+          Moments from our journeys across Sri Lanka
+        </h2>
+        <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+          A glimpse into the landscapes, experiences, and memories shared with our guests.
+          Explore real moments from tours hosted by D &amp; D Tours.
+        </p>
+      </div>
+
+      <a href="gallery.html"
+        class="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 hover:text-emerald-800 transition">
+        View full gallery
+        <span class="text-lg">→</span>
+      </a>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-4 md:gap-6">
+
+      <!-- Large Feature Image -->
+      <div class="col-span-2 row-span-2 relative group rounded-3xl overflow-hidden shadow-lg">
+        <img
+          src="/public/public/assets/customer pics/WhatsApp Image 2025-12-19 at 10.21.13 AM.jpeg"
+          alt="Sri Lanka tour experience"
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      </div>
+
+      <!-- Image 2 -->
+      <div class="relative group rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/public/public/assets/customer pics/WhatsApp Image 2025-12-19 at 10.20.53 AM (2).jpeg"
+          alt="Hill country views"
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+        />
+      </div>
+
+      <!-- Image 3 -->
+      <div class="relative group rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/public/public/assets/customer pics/WhatsApp Image 2025-12-19 at 10.20.54 AM.jpeg"
+          alt="Coastal Sri Lanka"
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+        />
+      </div>
+
+      <!-- Image 4 -->
+      <div class="relative group rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/public/public/assets/customer pics/WhatsApp Image 2025-12-19 at 10.21.15 AM.jpeg"
+          alt="Cultural landmarks"
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+        />
+      </div>
+
+      <!-- Image 5 -->
+      <div class="relative group rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/public/public/assets/customer pics/WhatsApp Image 2025-12-19 at 10.20.53 AM (1).jpeg"
+          alt="Beach sunsets"
+          class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700 ease-out"
+        />
+      </div>
+
+    </div>
+
+    <!-- Footer note -->
+    <p class="text-[11px] text-zinc-400 max-w-md">
+      Photos shown here are from real destinations and tour routes.  
+      Visit the full gallery to explore more experiences.
+    </p>
+
+  </div>
+</section>
+
+<!-- TOURS GRID (Firebase powered) -->
+<section id="tours-section" class="py-16 md:py-20 bg-zinc-50">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 space-y-7 fade-in-up">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+      <div class="space-y-2 max-w-md">
+        <h2 class="text-xl md:text-2xl font-bold text-zinc-900">
+          Available tours
+        </h2>
+        <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+          Browse our curated private tours. All listings, prices, and photos are managed dynamically.
+        </p>
+      </div>
+      <span id="tours-count" class="text-[11px] text-zinc-400">Loading…</span>
+    </div>
+
+    <div
+      id="tours-list"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+      <!-- Firebase injects cards here -->
+    </div>
+
+  </div>
+</section>
+
+<!-- LOAD TOURS SCRIPT -->
+<script type="module" src="./public/js/tourload.js"></script>
+
+
+  <!-- TRIPADVISOR-STYLE REVIEWS -->
+<section class="bg-white border-y border-zinc-200">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 py-16 space-y-10">
+
+    <!-- HEADER -->
+    <div class="text-center space-y-3">
+      <div class="flex justify-center items-center gap-2">
+        <img src="https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg"
+             alt="TripAdvisor"
+             class="h-5 opacity-80">
+        <span class="text-xs text-zinc-500">Guest reviews</span>
+      </div>
+
+      <h2 class="text-2xl md:text-3xl font-bold text-zinc-900">
+        Loved by travellers worldwide
+      </h2>
+
+      <p class="text-sm md:text-base text-zinc-600 max-w-2xl mx-auto">
+        Reviews from TripAdvisor guests who booked tours with D &amp; D Tours.
+      </p>
+    </div>
+
+    <!-- REVIEWS GRID -->
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- REVIEW CARD -->
+      <div class="rounded-3xl border bg-white p-6 shadow-sm hover:shadow-lg transition">
+        <!-- STARS -->
+        <div class="flex gap-1 mb-3">
+          <span class="text-emerald-600">★★★★★</span>
+        </div>
+
+        <!-- TEXT -->
+        <p class="text-sm text-zinc-800 leading-relaxed">
+          “I joined a group tour through Sri Lanka, and we had an incredible experience! Our tour guide was super friendly, knowledgeable, and always made sure everyone was comfortable. 
+          He showed us beautiful places, shared interesting stories about the culture and history, and made the whole trip fun and memorable.
+           I would definitely recommend this tour to anyone who wants to discover the real beauty of Sri Lanka!”
+        </p>
+
+        <!-- FOOTER -->
+        <div class="mt-5 flex items-center gap-3">
+          <div class="h-9 w-9 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold">
+            A
+          </div>
+          <div class="text-xs">
+            <p class="font-semibold text-zinc-800">Mustafa C</p>
+            <p class="text-zinc-500">Oct 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW CARD -->
+      <div class="rounded-3xl border bg-white p-6 shadow-sm hover:shadow-lg transition">
+        <div class="flex gap-1 mb-3">
+          <span class="text-emerald-600">★★★★★</span>
+        </div>
+
+        <p class="text-sm text-zinc-800 leading-relaxed">
+          “Our 17-day road trip to Sri Lanka as a family will remain unforgettable!! 
+          Thanks in large part to Gayan, our driver, who introduced us to the most beautiful regions of the country.
+          Discreet but always listening to our desires and needs, he allowed us to plunge into the atmosphere of this beautiful country that he knows by heart.
+          Caring, patient and humorous, he put us in confidence and allowed us to be guided.
+          I highly recommend it!!”
+        </p>
+
+        <div class="mt-5 flex items-center gap-3">
+          <div class="h-9 w-9 rounded-full bg-rose-100 text-rose-600 flex items-center justify-center text-xs font-bold">
+            S
+          </div>
+          <div class="text-xs">
+            <p class="font-semibold text-zinc-800">Sofia L</p>
+            <p class="text-zinc-500">August 26, 2025</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEW CARD -->
+      <div class="rounded-3xl border bg-white p-6 shadow-sm hover:shadow-lg transition">
+        <div class="flex gap-1 mb-3">
+          <span class="text-emerald-600">★★★★★</span>
+        </div>
+
+        <p class="text-sm text-zinc-800 leading-relaxed">
+          “A huge thank you to our driver Gayan for spending 17 days together in Sri Lanka! 
+          Thanks to his kindness, professionalism and valuable advice, we were able to discover this beautiful country in the best conditions. 
+          His patience and availability made this trip unforgettable for our whole family.”
+        </p>
+
+        <div class="mt-5 flex items-center gap-3">
+          <div class="h-9 w-9 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">
+            J
+          </div>
+          <div class="text-xs">
+            <p class="font-semibold text-zinc-800">Lola</p>
+            <p class="text-zinc-500">August 26, 2025</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTNOTE -->
+    <p class="text-[11px] text-zinc-400 text-center">
+      Reviews shown are from TripAdvisor guests. Displayed here for presentation purposess.
+    </p>
+
+  </div>
+</section>
+
+
+   
+  </main>
+
+  <footer class="bg-white border-t border-zinc-200">
+    <div
+      class="max-w-6xl mx-auto px-4 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-1 text-[11px] text-zinc-400">
+      <span>© 2025 D &amp; D Tours · All rights reserved</span>
+      <span>Guests use this site · Admin / host tools stay in a separate secure page</span>
+    </div>
+  </footer>
+
+  <!-- BOOKING MODAL (needed by booking.js) -->
+  <div id="booking-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center hidden z-40">
+    <div class="bg-white rounded-2xl p-5 w-full max-w-md shadow-xl">
+      <div class="flex justify-between items-center mb-3">
+        <h3 class="font-semibold text-sm">Book tour</h3>
+        <button id="booking-close" class="text-gray-500 text-sm">✕</button>
+      </div>
+      <p id="booking-tour-title" class="font-medium text-sm mb-2"></p>
+      <div class="grid gap-2 text-sm">
+        <input id="booking-date" type="date" class="border rounded px-3 py-2" />
+        <input id="booking-time" type="time" class="border rounded px-3 py-2" />
+        <input id="booking-people" type="number" min="1" value="1" class="border rounded px-3 py-2" />
+        <input id="booking-pickup" type="text" placeholder="Pickup location" class="border rounded px-3 py-2" />
+      </div>
+      <div class="mt-4">
+        <button id="booking-pay"
+          class="w-full bg-emerald-600 text-white px-4 py-2 rounded text-sm hover:bg-emerald-700 transition">
+          Confirm &amp; Pay (Demo)
+        </button>
+        <p id="booking-message" class="text-xs text-center text-gray-600 mt-2 min-h-[1.2rem]"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS for tours + booking -->
+  
+    
+<script type="module" src="./js/tours.js"></script>
+  <script type="module" src="./js/booking.js"></script>
+  <script>
+  const mobileBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  mobileBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!-- public/my-trips.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D & D Tours — My trips</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+  <!-- NAV -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="h-9 w-9 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">
+          D&D
+        </div>
+        <span class="font-semibold text-emerald-900 text-sm md:text-base">D &amp; D Tours — My trips</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs md:text-sm">
+        <a href="index.html" class="text-gray-600 hover:text-emerald-700">Home</a>
+        <button id="nav-logout"
+          class="px-3 py-1.5 rounded-lg bg-rose-500 text-white hover:bg-rose-600 text-xs md:text-sm">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-10">
+    <!-- Heading -->
+    <div class="mb-6 flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Your trips</h1>
+        <p class="text-xs md:text-sm text-slate-500">
+          View your upcoming and past tours with D &amp; D Tours. Details here should match what you see on TripAdvisor
+          style bookings.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="border-b border-slate-200 mb-4 text-sm">
+      <nav class="-mb-px flex gap-4">
+        <button id="tab-upcoming"
+          class="border-b-2 border-emerald-600 text-emerald-700 px-1 pb-2 font-medium text-xs md:text-sm">
+          Upcoming
+        </button>
+        <button id="tab-past"
+          class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 px-1 pb-2 font-medium text-xs md:text-sm">
+          Past trips
+        </button>
+      </nav>
+    </div>
+
+    <!-- Loading skeleton -->
+    <div id="trips-loading" class="space-y-3">
+      <div class="animate-pulse bg-white rounded-2xl border border-slate-100 p-4 h-24"></div>
+      <div class="animate-pulse bg-white rounded-2xl border border-slate-100 p-4 h-24"></div>
+    </div>
+
+    <!-- Empty message -->
+    <p id="trips-empty" class="hidden text-xs md:text-sm text-slate-500 mt-4">
+      You don’t have any trips in this section yet.
+    </p>
+
+    <!-- List -->
+    <div id="trips-list" class="hidden space-y-4 text-sm"></div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 text-[11px] text-slate-400 flex justify-between">
+      <span>© 2025 D &amp; D Tours</span>
+      <span>Bookings powered by Firebase</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/my-trips.js"></script>
+</body>
+</html>

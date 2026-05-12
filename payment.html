@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Payment | D & D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-b from-zinc-50 to-white min-h-screen flex items-center justify-center">
+
+<div class="max-w-2xl w-full px-4">
+  <div class="bg-white rounded-3xl shadow-xl p-6 space-y-6">
+
+    <!-- HEADER -->
+    <div class="text-center space-y-1">
+      <h1 class="text-2xl font-bold text-zinc-900">Review & Payment</h1>
+      <p class="text-sm text-zinc-500">
+        Please review your booking before continuing
+      </p>
+    </div>
+
+    <!-- BOOKING SUMMARY -->
+    <div class="border rounded-2xl p-4 bg-zinc-50 space-y-2">
+      <h2 class="font-semibold text-zinc-800 text-sm">Booking summary</h2>
+
+      <div class="text-sm text-zinc-700 space-y-1">
+        <p><strong>Tour:</strong> <span id="summary-tour"></span></p>
+        <p><strong>Date:</strong> <span id="summary-date"></span></p>
+        <p><strong>People:</strong> <span id="summary-people"></span></p>
+        <p><strong>Pickup:</strong> <span id="summary-pickup"></span></p>
+        <p><strong>Email:</strong> <span id="summary-email"></span></p>
+      </div>
+
+      <div class="pt-2 border-t text-sm font-semibold text-emerald-700">
+        Total: <span id="summary-total"></span>
+      </div>
+    </div>
+
+    <!-- PAYMENT OPTIONS -->
+    <div class="space-y-4">
+
+      <!-- PAY LATER -->
+      <button
+        id="pay-later"
+        class="w-full border rounded-2xl p-4 text-left hover:shadow-md transition group">
+        <div class="flex gap-3">
+          <span class="text-2xl">🧳</span>
+          <div>
+            <p class="font-semibold group-hover:text-emerald-600">
+              Reserve now, pay later
+            </p>
+            <p class="text-xs text-zinc-500 mt-1">
+              Secure your booking. Our guide will contact you to arrange payment.
+            </p>
+          </div>
+        </div>
+      </button>
+
+      <!-- BANK TRANSFER -->
+      <button
+        id="bank-transfer"
+        class="w-full border rounded-2xl p-4 text-left hover:shadow-md transition group">
+        <div class="flex gap-3">
+          <span class="text-2xl">🏦</span>
+          <div>
+            <p class="font-semibold group-hover:text-emerald-600">
+              Bank transfer
+            </p>
+            <p class="text-xs text-zinc-500 mt-1">
+              Transfer using bank details shown on the next screen.
+            </p>
+          </div>
+        </div>
+      </button>
+
+      <!-- BANK TRANSFER MODAL -->
+<div
+  id="bank-modal"
+  class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50"
+>
+  <div class="bg-white rounded-2xl p-6 w-full max-w-md space-y-4">
+
+    <h2 class="text-lg font-semibold text-zinc-900">
+      Bank Transfer Details
+    </h2>
+
+    <div class="text-sm text-zinc-700 space-y-1">
+      <p><strong>Bank:</strong> Commercial Bank</p>
+      <p><strong>Account Name:</strong> D & D Tours</p>
+      <p><strong>Account No:</strong> 123456789</p>
+      <p><strong>Branch:</strong> Colombo</p>
+      <p class="text-xs text-zinc-500 pt-2">
+        Please use your email or tour name as reference.
+      </p>
+    </div>
+
+    <div class="flex gap-3 pt-2">
+      <button
+        id="close-bank"
+        class="flex-1 border rounded-lg py-2 text-sm hover:bg-zinc-100"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="confirm-bank"
+        class="flex-1 bg-emerald-600 text-white rounded-lg py-2 text-sm hover:bg-emerald-700"
+      >
+        I’ve completed the transfer
+      </button>
+    </div>
+  </div>
+</div>
+
+
+      <!-- ONLINE PAYMENT -->
+      <div class="w-full border rounded-2xl p-4 opacity-50 cursor-not-allowed">
+        <div class="flex gap-3">
+          <span class="text-2xl">💳</span>
+          <div>
+            <p class="font-semibold">Online payment</p>
+            <p class="text-xs text-zinc-500 mt-1">
+              Coming soon (PayHere)
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FOOTER NOTE -->
+    <p class="text-[11px] text-zinc-400 text-center">
+      No payment is charged at this stage.
+    </p>
+
+  </div>
+</div>
+
+<script type="module" src="./public/js/payment.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Guest Booking | D & D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- JS -->
+  <script type="module" src="./public/js/guest-booking.js" defer></script>
+</head>
+
+<body class="bg-zinc-50 min-h-screen flex flex-col">
+
+<!-- NAV -->
+<nav class="bg-white border-b">
+  <div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+    <div class="font-semibold text-zinc-900">D & D Tours</div>
+    <a href="guest-tours.html" class="text-sm text-emerald-700 hover:underline">
+      ← Back to tours
+    </a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="flex-1 max-w-5xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-8">
+
+  <!-- TOUR DETAILS -->
+  <section id="tour-details" class="space-y-4">
+    <div class="h-56 rounded-xl bg-zinc-200" id="tour-image"></div>
+
+    <h1 id="tour-title" class="text-2xl font-bold text-zinc-900">
+      Loading tour...
+    </h1>
+
+    <p id="tour-description" class="text-sm text-zinc-600"></p>
+
+    <p class="font-semibold text-emerald-700 text-lg" id="tour-price"></p>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="bg-white rounded-2xl shadow p-6 space-y-4">
+    <h2 class="text-lg font-semibold">Guest Booking Details</h2>
+
+    <form id="booking-form" class="space-y-3">
+
+      <div>
+        <label class="text-xs font-medium">Your name</label>
+        <input required id="name" class="w-full border rounded-lg px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="text-xs font-medium">Email</label>
+        <input type="email" required id="email" class="w-full border rounded-lg px-3 py-2 text-sm" />
+      </div>
+
+      <div>
+        <label class="text-xs font-medium">WhatsApp number</label>
+        <input required id="phone" class="w-full border rounded-lg px-3 py-2 text-sm" />
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-medium">Date</label>
+          <input type="date" required id="date" class="w-full border rounded-lg px-3 py-2 text-sm" />
+        </div>
+
+        <div>
+          <label class="text-xs font-medium">People</label>
+          <input type="number" min="1" value="1" required id="people"
+                 class="w-full border rounded-lg px-3 py-2 text-sm" />
+        </div>
+      </div>
+
+      <div>
+        <label class="text-xs font-medium">Pickup location</label>
+        <input required id="pickup" class="w-full border rounded-lg px-3 py-2 text-sm" />
+      </div>
+
+      <button
+        class="w-full bg-emerald-600 text-white py-2.5 rounded-xl font-semibold hover:bg-emerald-700">
+        Confirm booking
+      </button>
+
+    </form>
+
+    <p class="text-[11px] text-zinc-500 text-center">
+      No account required • Pay later available
+    </p>
+  </section>
+
+</main>
+
+<footer class="text-center text-[11px] text-zinc-400 py-4">
+  © 2025 D & D Tours
+</footer>
+
+</body>
+</html>

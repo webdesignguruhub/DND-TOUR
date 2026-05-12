@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Welcome | D & D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="relative min-h-screen overflow-hidden bg-black text-white">
+
+  <!-- WEBGL CANVAS -->
+  <canvas id="bg" class="absolute inset-0"></canvas>
+
+  <!-- OVERLAY -->
+  <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl px-10 py-12 max-w-sm w-full text-center shadow-2xl">
+
+      <h1 class="text-2xl font-semibold tracking-tight">
+        Login successful
+      </h1>
+
+      <p class="mt-3 text-sm text-zinc-300">
+        Preparing your dashboard
+      </p>
+
+      <div class="mt-8 flex justify-center">
+        <div class="h-6 w-6 border border-white/40 border-t-white rounded-full animate-spin"></div>
+      </div>
+
+      <p class="mt-8 text-xs text-zinc-400 tracking-wide">
+        D & D TOURS
+      </p>
+    </div>
+  </div>
+
+  <!-- REDIRECT -->
+ <script>
+  setTimeout(() => {
+    const intent = sessionStorage.getItem("postLoginRedirect");
+    const selectedTourId = localStorage.getItem("selectedTourId");
+
+    if (intent === "selected-tour" && selectedTourId) {
+      // clean up so it doesn't repeat
+      sessionStorage.removeItem("postLoginRedirect");
+
+      // continue booking INSIDE dashboard context
+      window.location.href = "guest-tours.html";
+    } else {
+      // normal login
+      window.location.href = "dashboard-users.html";
+    }
+  }, 2200);
+</script>
+
+
+
+  <!-- WEBGL BACKGROUND -->
+  <script>
+    const canvas = document.getElementById("bg");
+    const gl = canvas.getContext("webgl");
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    }
+    window.addEventListener("resize", resize);
+    resize();
+
+    const vertexSrc = `
+      attribute vec2 position;
+      void main() {
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `;
+
+    const fragmentSrc = `
+      precision highp float;
+      uniform float time;
+      uniform vec2 resolution;
+
+      void main() {
+        vec2 uv = gl_FragCoord.xy / resolution.xy;
+        float wave = sin(uv.y * 10.0 + time) * 0.03;
+        vec3 color = mix(
+          vec3(0.02, 0.08, 0.15),
+          vec3(0.02, 0.35, 0.30),
+          uv.y + wave
+        );
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+
+    function createShader(type, src) {
+      const shader = gl.createShader(type);
+      gl.shaderSource(shader, src);
+      gl.compileShader(shader);
+      return shader;
+    }
+
+    const program = gl.createProgram();
+    gl.attachShader(program, createShader(gl.VERTEX_SHADER, vertexSrc));
+    gl.attachShader(program, createShader(gl.FRAGMENT_SHADER, fragmentSrc));
+    gl.linkProgram(program);
+    gl.useProgram(program);
+
+    const buffer = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+    gl.bufferData(
+      gl.ARRAY_BUFFER,
+      new Float32Array([-1,-1, 1,-1, -1,1, 1,1]),
+      gl.STATIC_DRAW
+    );
+
+    const position = gl.getAttribLocation(program, "position");
+    gl.enableVertexAttribArray(position);
+    gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
+
+    const timeLoc = gl.getUniformLocation(program, "time");
+    const resLoc = gl.getUniformLocation(program, "resolution");
+
+    function render(t) {
+      gl.uniform1f(timeLoc, t * 0.001);
+      gl.uniform2f(resLoc, canvas.width, canvas.height);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
+  </script>
+
+</body>
+</html>

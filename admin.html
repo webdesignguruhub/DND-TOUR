@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin – Manage Tours</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-100 min-h-screen">
+
+  <div class="max-w-3xl mx-auto py-12 px-4">
+    <h1 class="text-2xl font-bold mb-6">Admin – Add Tour</h1>
+
+    <form id="tourForm" class="bg-white p-6 rounded-2xl shadow space-y-4">
+
+      <input id="title" type="text" placeholder="Tour title"
+        class="w-full border rounded-lg px-3 py-2" required />
+
+      <input id="description" type="text" placeholder="Short description"
+        class="w-full border rounded-lg px-3 py-2" required />
+
+      <input id="price" type="number" placeholder="Price ($)"
+        class="w-full border rounded-lg px-3 py-2" required />
+
+      <input id="rating" type="number" step="0.1" placeholder="Rating (4.8)"
+        class="w-full border rounded-lg px-3 py-2" />
+
+      <input id="duration" type="text" placeholder="Duration (Full day)"
+        class="w-full border rounded-lg px-3 py-2" />
+
+      <input id="image" type="file" accept="image/*"
+        class="w-full border rounded-lg px-3 py-2" required />
+
+      <label class="flex items-center gap-2 text-sm">
+        <input id="active" type="checkbox" checked />
+        Active (show on site)
+      </label>
+
+      <button
+        class="w-full bg-emerald-600 text-white py-2 rounded-lg font-semibold hover:bg-emerald-700">
+        Save Tour
+      </button>
+    </form>
+
+    <p id="status" class="text-sm text-zinc-600 mt-4"></p>
+  </div>
+
+  <hr class="my-10">
+
+  <h2 class="text-xl font-bold mb-4">Existing Tours</h2>
+
+  <div id="admin-tours"
+  class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  </div>
+
+  <script type="module" src="./public/js/admin.js"></script>
+</body>
+</html>

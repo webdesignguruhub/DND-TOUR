@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D & D Tours — Sign in</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* small success flash animation */
+    .auth-success {
+      --tw-bg-opacity: 1;
+      animation: pulse-2 900ms ease-out;
+    }
+    @keyframes pulse-2 {
+      0% { box-shadow: 0 0 0 0 rgba(16,185,129, .25); }
+      70% { box-shadow: 0 0 0 12px rgba(16,185,129, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(16,185,129, 0); }
+    }
+
+    /* doodle background */
+    #doodle {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.08;
+      mix-blend-mode: multiply;
+    }
+
+    /* ensure main card sits above doodle */
+    main { position: relative; z-index: 1; }
+    
+  </style>
+</head>
+
+<body class="bg-gradient-to-b from-emerald-900 via-emerald-800 to-zinc-900 min-h-screen flex flex-col text-white relative overflow-hidden">
+
+  <!-- Background glows -->
+  <div class="absolute -top-40 -left-32 w-[34rem] h-[34rem] bg-emerald-500/20 rounded-full filter blur-[140px]"></div>
+  <div class="absolute top-32 -right-32 w-[30rem] h-[30rem] bg-teal-400/20 rounded-full filter blur-[140px]"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[40rem] h-32 bg-gradient-to-r from-transparent via-amber-400/20 to-transparent blur-3xl"></div>
+
+  <!-- doodle background -->
+  <div id="doodle" aria-hidden="true" class="mix-blend-lighten opacity-8"></div>
+
+  <!-- NAV -->
+  <!-- NAV (Login page – same style as index) -->
+<nav class="bg-white/10 backdrop-blur border-b border-white/20 z-20 relative">
+  <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+
+    <!-- LEFT: Brand -->
+    <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+      <div class="h-9 w-9 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold">
+        D&D
+      </div>
+      <div class="flex flex-col leading-tight">
+        <span class="font-semibold tracking-tight text-sm md:text-base text-white">
+          D &amp; D Tours
+        </span>
+        <span class="text-[10px] text-emerald-200">
+          Sri Lanka • Private experiences
+        </span>
+      </div>
+    </div>
+
+    <!-- RIGHT: Actions -->
+    <div class="flex items-center gap-4 text-xs md:text-sm">
+
+      <!-- Help / WhatsApp (optional but pro) -->
+      <a href="contact.html"
+         target="_blank"
+         class="text-emerald-200 hover:text-emerald-400 transition">
+        Need help?
+      </a>
+
+      <!-- Back to home -->
+      <button
+        onclick="window.location.href='index.html'"
+        class="px-3 py-1.5 rounded-full border border-white/30 text-white hover:bg-white/10 transition">
+        ← Back to home
+      </button>
+
+    </div>
+  </div>
+</nav>
+
+
+  <!-- MAIN CARD -->
+  <main class="flex-1 flex items-center justify-center px-4 py-12 relative z-10">
+    <div class="max-w-4xl w-full grid md:grid-cols-2 gap-8 items-center">
+
+      <!-- LEFT COPY -->
+      <div class="hidden md:flex flex-col gap-4 fade-in-up text-emerald-100">
+        <h1 class="text-3xl font-extrabold">Sign in to plan your trip</h1>
+        <p class="text-sm text-emerald-200/90">
+          Save your bookings, view upcoming tours, and message D &amp; D Tours — just like TripAdvisor style accounts.
+        </p>
+
+        <ul class="space-y-1 text-xs text-emerald-200/80">
+          <li>• View active + past tours</li>
+          <li>• Save pickup / contact details</li>
+          <li>• Easy WhatsApp support</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT SIDE CARD -->
+      <div class="bg-white/10 backdrop-blur border border-white/20 rounded-3xl shadow-2xl shadow-black/50 p-6 space-y-4 text-white float-card fade-in-up fade-in-up-delay-1">
+
+        <div class="flex justify-between items-center mb-1">
+          <h2 class="text-lg font-semibold">Login or create an account</h2>
+        </div>
+
+        <!-- MODE TABS — hidden until login is ready -->
+        <div class="hidden flex justify-center gap-2 text-xs mb-3">
+          <button id="mode-login"
+            class="px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-900 font-medium">
+            Login
+          </button>
+          <button id="mode-signup"
+            class="px-3 py-1 rounded-full bg-emerald-100/20 text-white">
+            Create account
+          </button>
+        </div>
+
+        <!-- EMAIL / PASSWORD — hidden until login is ready -->
+        <div class="space-y-2 hidden">
+          <div>
+            <label class="block text-[11px] font-medium mb-1">Email</label>
+            <input id="auth-email" type="email"
+              class="w-full border border-white/20 rounded-md px-3 py-2 text-sm bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" />
+          </div>
+
+          <div class="relative">
+            <label class="block text-[11px] font-medium mb-1">Password</label>
+            <input id="auth-password" type="password"
+              class="w-full border border-white/20 rounded-md px-3 py-2 text-sm pr-20 bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" />
+            <button id="toggle-pass"
+              class="absolute right-2 top-8 text-xs bg-white/20 px-2 py-1 rounded-md border border-white/30 text-white">Show</button>
+          </div>
+        </div>
+
+        <!-- SIGNUP EXTRA -->
+        <div id="signup-extra" class="space-y-2 hidden">
+          <div>
+            <label class="block text-[11px] font-medium mb-1">Full name</label>
+            <input id="auth-name" type="text"
+              class="w-full border border-white/20 rounded-md px-3 py-2 text-sm bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" />
+          </div>
+          <div class="flex gap-2">
+            <div class="w-1/3">
+              <label class="block text-[11px] font-medium mb-1">Code</label>
+              <input id="auth-country-code" placeholder="+94"
+                class="w-full border border-white/20 rounded-md px-3 py-2 text-sm bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-[11px] font-medium mb-1">Mobile / WhatsApp</label>
+              <input id="auth-phone" type="text"
+                class="w-full border border-white/20 rounded-md px-3 py-2 text-sm bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" />
+            </div>
+          </div>
+          <div>
+            <label class="block text-[11px] font-medium mb-1">Country</label>
+            <input id="auth-country" list="countries-list"
+              class="w-full border border-white/20 rounded-md px-3 py-2 text-sm bg-white/10 placeholder:text-white/50 focus:ring-2 focus:ring-emerald-400 text-white" placeholder="e.g. 🇱🇰 Sri Lanka" />
+            <datalist id="countries-list">
+              <option value="🇱🇰 Sri Lanka"></option>
+              <option value="🇮🇳 India"></option>
+              <option value="🇬🇧 United Kingdom"></option>
+              <option value="🇺🇸 United States"></option>
+              <option value="🇦🇺 Australia"></option>
+              <option value="🇨🇦 Canada"></option>
+              <option value="🇳🇿 New Zealand"></option>
+            </datalist>
+          </div>
+        </div>
+
+        <!-- SUBMIT — hidden until login is ready -->
+        <button id="auth-submit"
+          class="hidden w-full mt-2 px-4 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-400 text-zinc-900 rounded-xl font-semibold hover:scale-105 transition">
+          Continue
+        </button>
+
+        <!-- SOCIAL LOGINS -->
+        <div class="space-y-2 mt-4">
+
+          <!-- Google — hidden until login is ready -->
+          <button id="auth-google"
+            class="hidden w-full flex items-center justify-center gap-2 px-4 py-2 border rounded-lg text-sm bg-white hover:bg-gray-100 transition">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="h-4" />
+            <span class="text-black font-medium">Continue with Google</span>
+          </button>
+
+          <!-- Coming soon notice -->
+          <div class="text-center text-xs text-emerald-300/70 bg-white/5 border border-white/10 rounded-lg py-2 px-3 mb-2">
+            Account login coming soon — browse as a guest for now
+          </div>
+
+          <button
+            id="continue-guest"
+            class="w-full mt-2 px-4 py-2 text-sm rounded-lg border border-white/30 text-white hover:bg-white/10 transition">
+            Continue as Guest
+          </button>
+
+        </div>
+
+        <p id="auth-message" class="text-[11px] text-center text-red-500 min-h-[1.2rem]"></p>
+        <p class="text-[10px] text-gray-300 text-center">
+          By continuing, you agree to be contacted by D &amp; D Tours for your booking details.
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="bg-white/10 backdrop-blur border-t border-white/20">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 py-3 text-[11px] flex justify-between text-gray-300">
+      <span>© 2025 D &amp; D Tours</span>
+    </div>
+  </footer>
+
+
+ 
+  
+  <!-- GUEST NOTICE MODAL -->
+<div
+  id="guest-modal"
+  class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 hidden"
+>
+  <div class="bg-white text-zinc-900 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+
+    <!-- Close -->
+    <button
+      id="guest-close"
+      class="absolute top-3 right-3 text-zinc-400 hover:text-zinc-700 text-xl"
+    >
+      ✕
+    </button>
+
+    <h3 class="text-lg font-bold mb-2">
+      Continue as Guest
+    </h3>
+
+    <p class="text-sm text-zinc-600 mb-4">
+      You can browse and view available tours as a guest.
+      <br /><br />
+      ⚠️ <strong>Limitations:</strong>
+    </p>
+
+    <ul class="text-sm text-zinc-600 space-y-1 mb-4 list-disc pl-5">
+      <li>No saved tours</li>
+      <li>No booking history</li>
+      <li>No dashboard access</li>
+      <li>Limited support</li>
+    </ul>
+
+    <div class="flex gap-3">
+      <button
+        id="guest-cancel"
+        class="flex-1 border border-zinc-300 py-2 rounded-lg text-sm hover:bg-zinc-100"
+      >
+        Cancel
+      </button>
+
+      <button
+        id="guest-confirm"
+        class="flex-1 bg-emerald-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-emerald-700"
+      >
+        Continue
+      </button>
+    </div>
+  </div>
+</div>
+
+ <!-- scripts: make sure paths match where you save the files -->
+  <script>
+    // small travel doodles array (SVGs). Random one chosen each load.
+    const doodles = [
+      `<svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+         <g fill="none" stroke="#0ea5a4" stroke-width="2">
+           <path d="M30 300 Q150 180 300 230 T600 210" stroke-linecap="round" stroke-linejoin="round"/>
+           <circle cx="680" cy="120" r="24" stroke="#10b981" fill="#10b981"/>
+           <path d="M120 500 q80 -60 200 -50" stroke-width="3" />
+           <g transform="translate(480,300) rotate(-12)">
+             <path d="M0 0 l40 -10 l10 6 l-5 14 l-45 -10" stroke="#ef4444" />
+           </g>
+         </g>
+       </svg>`,
+      `<svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+         <g fill="none" stroke="#3b82f6" stroke-width="2">
+           <path d="M10 350 q140 -220 320 -180 t460 -40" />
+           <g transform="translate(200,120)">
+             <rect x="0" y="0" width="60" height="30" rx="6" fill="#f97316" stroke="#f97316"/>
+             <path d="M60 15 l30 -10" stroke="#f97316"/>
+           </g>
+           <circle cx="700" cy="80" r="18" fill="#60a5fa"/>
+         </g>
+       </svg>`,
+      `<svg width="100%" height="100%" viewBox="0 0 800 600">
+         <g stroke="#7c3aed" stroke-width="2" fill="none">
+           <path d="M20 420 C200 200 400 200 780 120" />
+           <path d="M100 480 q120 -80 260 -30" stroke-width="3"/>
+           <path d="M520 360 l60 -30 l30 8" stroke="#ef4444"/>
+         </g>
+       </svg>`
+    ];
+
+    const doodleEl = document.getElementById('doodle');
+    if (doodleEl) {
+      doodleEl.innerHTML = doodles[Math.floor(Math.random() * doodles.length)];
+    }
+  </script>
+
+  <!-- firebase + app scripts -->
+  <script type="module" src="/public/public/js/firebase-config.js"></script>
+  <script type="module" src="/public/public/js/auth.js"></script>
+  <script>
+  // If a tour was selected before login, remember intent
+  if (localStorage.getItem("selectedTourId")) {
+    sessionStorage.setItem("postLoginRedirect", "selected-tour");
+  }
+</script>
+
+
+<script>
+  // Guest flow (SAFE version)
+  document.addEventListener("DOMContentLoaded", () => {
+    const guestBtn = document.getElementById("continue-guest");
+    const modal = document.getElementById("guest-modal");
+    const closeBtn = document.getElementById("guest-close");
+    const cancelBtn = document.getElementById("guest-cancel");
+    const confirmBtn = document.getElementById("guest-confirm");
+
+    if (!guestBtn || !modal) return;
+
+    guestBtn.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    [closeBtn, cancelBtn].forEach(btn => {
+      btn.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+    });
+
+    confirmBtn.addEventListener("click", () => {
+      // Mark guest session (optional but useful)
+      localStorage.setItem("userType", "guest");
+
+      // Redirect
+      window.location.href = "guest-tours.html";
+    });
+  });
+</script>
+
+
+</body>
+</html>

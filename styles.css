@@ -1,0 +1,43 @@
+/* 🟦 Animated gradient background */
+.success-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(270deg, #0ea5e9, #3b82f6, #6366f1);
+  background-size: 600% 600%;
+  animation: gradientMove 6s ease infinite;
+  color: white;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ✈️ Logo animation */
+.travel-icon {
+  width: 120px;
+  height: 120px;
+  animation: float 2s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

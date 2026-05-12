@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>D & D Tours – My Bookings</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm sticky top-0 z-20">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+      <span class="font-semibold text-sky-700 text-sm md:text-base">D & D Tours</span>
+      <div class="flex items-center gap-3 text-xs md:text-sm">
+        <a href="index.html" class="text-slate-600 hover:text-sky-600">Home</a>
+        <button id="nav-logout"
+          class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600">
+          Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8">
+    <h1 class="text-xl md:text-2xl font-bold text-slate-900 mb-1">My bookings</h1>
+    <p class="text-xs md:text-sm text-slate-500 mb-4">
+      View all tours you’ve booked with D & D Tours.
+    </p>
+
+    <div id="customer-bookings" class="space-y-3 text-sm">
+      <!-- populated by JS -->
+    </div>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 text-[11px] text-slate-400">
+      © 2025 D & D Tours
+    </div>
+  </footer>
+
+  <script type="module" src="./js/customer-dashboard.js"></script>
+</body>
+</html>

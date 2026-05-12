@@ -1,0 +1,74 @@
+<!-- public/owner-dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>D & D Tours — Owner dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+      <span class="font-semibold text-slate-900 text-sm md:text-base">D &amp; D Tours — Owner dashboard</span>
+      <button id="nav-logout"
+        class="px-3 py-1.5 rounded-lg bg-rose-500 text-white hover:bg-rose-600 text-xs md:text-sm">
+        Logout
+      </button>
+    </div>
+  </nav>
+
+  <main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-8 space-y-6">
+    <!-- Summary cards -->
+    <section class="grid sm:grid-cols-3 gap-4 text-sm">
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+        <p class="text-xs text-slate-500">Active bookings (today & future)</p>
+        <p id="stat-active" class="text-2xl font-bold text-emerald-700 mt-1">–</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+        <p class="text-xs text-slate-500">Paid bookings</p>
+        <p id="stat-paid" class="text-2xl font-bold text-emerald-700 mt-1">–</p>
+      </div>
+      <div class="bg-white rounded-2xl p-4 border border-slate-100 shadow-sm">
+        <p class="text-xs text-slate-500">Total guests (future)</p>
+        <p id="stat-guests" class="text-2xl font-bold text-emerald-700 mt-1">–</p>
+      </div>
+    </section>
+
+    <!-- Booking list -->
+    <section class="bg-white rounded-2xl p-4 md:p-5 border border-slate-100 shadow-sm text-sm">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-4">
+        <div>
+          <h2 class="font-semibold text-slate-900">All bookings</h2>
+          <p class="text-xs text-slate-500">Sorted by date, similar to TripAdvisor supplier view.</p>
+        </div>
+        <div class="flex gap-2 text-xs">
+          <select id="filter-status"
+            class="border border-slate-200 rounded-md px-2 py-1">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="paid">Paid</option>
+            <option value="cancelled">Cancelled</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="owner-loading" class="space-y-2">
+        <div class="animate-pulse bg-slate-100 rounded-xl h-14"></div>
+        <div class="animate-pulse bg-slate-100 rounded-xl h-14"></div>
+      </div>
+      <div id="owner-empty" class="hidden text-xs text-slate-500">No bookings match this filter.</div>
+      <div id="owner-list" class="hidden divide-y divide-slate-100 text-xs md:text-sm"></div>
+    </section>
+  </main>
+
+  <footer class="bg-white border-t border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-3 text-[11px] text-slate-400 flex justify-between">
+      <span>Private — for D &amp; D Tours only</span>
+      <span>Do not share this URL publicly</span>
+    </div>
+  </footer>
+
+  <script type="module" src="./js/owner-dashboard.js"></script>
+</body>
+</html>

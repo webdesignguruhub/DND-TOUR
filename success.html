@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Confirmed | D &amp; D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --emerald:   #10b981;
+      --emerald-lt:#34d399;
+      --teal:      #0d9488;
+      --dark:      #0f2318;
+      --card-bg:   rgba(255,255,255,0.07);
+      --border:    rgba(255,255,255,0.15);
+      --label:     #6ee7b7;
+      --text:      #ecfdf5;
+      --muted:     rgba(236,253,245,0.65);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      background: radial-gradient(ellipse at 20% 0%, #064e3b 0%, #022c22 45%, #0a0a0a 100%);
+      color: var(--text);
+    }
+
+    /* subtle noise texture */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    .card {
+      position: relative; z-index: 1;
+      background: var(--card-bg);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 2.4rem 2rem;
+      max-width: 440px;
+      width: 100%;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(16,185,129,0.08);
+      animation: rise .55s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(22px) scale(.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);    }
+    }
+
+    /* ---- checkmark ---- */
+    .check-wrap {
+      display: flex; justify-content: center;
+      margin-bottom: 1.4rem;
+    }
+    .check-circle {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 10px rgba(16,185,129,.15);
+      animation: pop .4s .3s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes pop {
+      from { transform: scale(0); } to { transform: scale(1); }
+    }
+    .check-circle svg { width: 30px; height: 30px; stroke: #fff; stroke-width: 2.5; fill: none; }
+
+    /* ---- headings ---- */
+    .status {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      text-align: center;
+      color: var(--emerald-lt);
+      margin-bottom: .45rem;
+      letter-spacing: -.01em;
+    }
+    .msg {
+      text-align: center;
+      font-size: .875rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+
+    /* ---- summary card ---- */
+    .summary {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.1rem 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .5rem;
+      padding: .35rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      font-size: .875rem;
+    }
+    .row:last-child { border-bottom: none; }
+    .row .lbl {
+      color: var(--label);
+      font-weight: 500;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .row .val {
+      color: var(--text);
+      text-align: right;
+      word-break: break-word;
+    }
+    .total-row {
+      margin-top: .6rem;
+      padding-top: .7rem;
+      border-top: 1px solid rgba(16,185,129,.3) !important;
+    }
+    .total-row .val {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--emerald-lt);
+    }
+
+    /* ---- email note ---- */
+    .email-note {
+      font-size: .78rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1.4rem;
+      line-height: 1.5;
+    }
+    .email-note span {
+      display: inline-block;
+      background: rgba(16,185,129,.12);
+      border: 1px solid rgba(16,185,129,.25);
+      border-radius: 6px;
+      padding: .25rem .65rem;
+      margin-top: .4rem;
+      font-size: .75rem;
+      color: var(--emerald-lt);
+    }
+
+    /* ---- countdown ---- */
+    .countdown {
+      font-size: .76rem;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    #c-count { color: var(--emerald-lt); font-weight: 600; }
+
+    /* ---- CTA ---- */
+    .btn {
+      display: block;
+      width: 100%;
+      padding: .78rem 1rem;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--teal) 100%);
+      color: #022c22;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      text-align: center;
+      text-decoration: none;
+      letter-spacing: .01em;
+      transition: transform .18s, box-shadow .18s;
+      box-shadow: 0 4px 20px rgba(16,185,129,.35);
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(16,185,129,.45); }
+    .btn:active { transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <!-- Animated checkmark -->
+    <div class="check-wrap">
+      <div class="check-circle">
+        <svg viewBox="0 0 24 24"><polyline points="4 12 9 17 20 7"/></svg>
+      </div>
+    </div>
+
+    <h2 id="s-status" class="status"></h2>
+    <p  id="s-message" class="msg"></p>
+
+    <!-- Booking details -->
+    <div class="summary">
+      <div class="row"><span class="lbl">Tour</span>    <span class="val" id="s-tour"></span></div>
+      <div class="row"><span class="lbl">Date</span>    <span class="val" id="s-date"></span></div>
+      <div class="row"><span class="lbl">People</span>  <span class="val" id="s-people"></span></div>
+      <div class="row"><span class="lbl">Pickup</span>  <span class="val" id="s-pickup"></span></div>
+      <div class="row"><span class="lbl">Email</span>   <span class="val" id="s-email"></span></div>
+      <div class="row"><span class="lbl">Payment</span> <span class="val" id="s-payment"></span></div>
+      <div class="row total-row">
+        <span class="lbl">Total</span>
+        <span class="val" id="s-total"></span>
+      </div>
+    </div>
+
+    <!-- Email confirmation note -->
+    <div class="email-note">
+      Confirmation emails are being sent to you and our team.
+      <br><span id="s-email-badge"></span>
+    </div>
+
+    <p class="countdown">Redirecting to My Bookings in <span id="c-count">8</span>s…</p>
+
+    <a href="index.html" class="btn">Back to Home</a>
+
+  </div>
+
+  <script type="module" src="./public/js/success.js"></script>
+
+  <!-- Countdown timer (plain JS, not module) -->
+  <script>
+    let n = 8;
+    const el = document.getElementById("c-count");
+    const iv = setInterval(() => {
+      n--;
+      if (el) el.textContent = n;
+      if (n <= 0) clearInterval(iv);
+    }, 1000);
+  </script>
+
+</body>
+</html>

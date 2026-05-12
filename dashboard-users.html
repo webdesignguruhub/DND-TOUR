@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard | D & D Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-50 min-h-screen flex flex-col">
+
+  <!-- 🔐 AUTH GUARD -->
+  <script type="module" src="./public/js/auth-guard.js"></script>
+
+  <!-- NAVBAR (MATCHES GUEST STYLE) -->
+  <nav class="bg-white border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img
+          src="/public/public/assets/final logo.png"
+          class="h-10 w-10 rounded-xl shadow"
+          alt="D & D Tours"
+        />
+        <div>
+          <p class="font-semibold text-zinc-900 text-sm">D & D Tours</p>
+          <p class="text-[10px] text-zinc-500">Dashboard</p>
+        </div>
+      </div>
+
+     
+
+      <!-- Actions -->
+      <div class="flex items-center gap-4">
+        <span id="user-email" class="text-sm text-zinc-600"></span>
+        <button
+          id="logout-btn"
+          class="text-sm text-red-500 hover:underline">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    
+  </nav>
+
+  <!-- MAIN (SAME CONTAINER AS GUEST) -->
+  <main class="flex-1 max-w-6xl mx-auto px-4 md:px-8 py-10 space-y-8">
+
+    <!-- HEADER -->
+    <div class="space-y-2">
+      <h1 class="text-2xl md:text-3xl font-bold text-zinc-900">
+        Dashboard
+      </h1>
+      <p class="text-sm text-zinc-600 max-w-md">
+        Browse tours and manage your bookings.
+      </p>
+
+      <button
+  id="view-all-tours"
+  class="hidden mb-4 text-sm text-emerald-700 hover:underline">
+  ← View all tours
+</button>
+
+    </div>
+
+    <!-- NAV TABS -->
+    <div class="flex gap-3">
+      <button
+        class="tab-btn bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm"
+        data-tab="book">
+        Book Tours
+      </button>
+
+      <button
+        class="tab-btn bg-emerald-100 text-emerald-800 px-4 py-2 rounded-lg text-sm"
+        data-tab="bookings">
+        My Bookings
+      </button>
+    </div>
+
+    <!-- BOOK TOURS TAB -->
+    <section id="tab-book">
+      <h2 class="text-lg font-semibold mb-4 text-zinc-900">
+        Available Tours
+      </h2>
+
+      <!-- SAME GRID AS GUEST -->
+      <div
+        id="tour-list"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      </div>
+    </section>
+
+    <!-- MY BOOKINGS TAB -->
+    <section id="tab-bookings" class="hidden">
+      <h2 class="text-lg font-semibold mb-4 text-zinc-900">
+        My Bookings
+      </h2>
+
+      <div
+        id="my-bookings"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (MATCHES GUEST) -->
+  <footer class="border-t bg-white">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 py-4 text-[11px] text-zinc-400">
+      © 2025 D & D Tours · Dashboard
+    </div>
+  </footer>
+
+  <!-- DASHBOARD LOGIC -->
+  <script type="module" src="./public/js/dashboard-user.js"></script>
+</body>
+</html>
